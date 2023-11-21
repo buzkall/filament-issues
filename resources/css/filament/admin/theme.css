@@ -2,7 +2,24 @@
 
 @config 'tailwind.config.js';
 
-
 .fi-topbar nav, .fi-sidebar-header {
     @apply h-32;
 }
+
+/* Block 1. fix error with impersonation banner */
+.fi-body .fi-layout > aside.fi-sidebar {
+    @apply pt-0
+}
+
+.fi-body .fi-layout .fi-main-ctn .fi-topbar {
+    top: 0;
+}
+/* end of fix error with impersonation banner */
+
+
+/* block 2. relative topbar */
+/*
+.fi-topbar {
+    position: relative;
+}
+*/
