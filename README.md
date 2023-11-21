@@ -45,18 +45,18 @@ We have 3 panels (One per role):
 
 But the login has to be the same for all: /login
 
-The Authenticate class will call canAccessPanel after a successful login
-To avoid logout of admin or federation in the client's login,
-we change the canAccessPanel to return true, and force the redirects in an overwritten LoginResponse.
+The Authenticate class will call canAccessPanel after a successful login.
+To avoid logging out the other roles in the client's login, we change the canAccessPanel to return true, and force the redirects in an overwritten LoginResponse.
 
 Also modify the LogoutResponse to redirect to /login
 
-But that means that both admin and federation users will go to the client's panel when going back to the site while being logged in
+But that means that both admin and federation users will go to the client's panel when typing the site's url while being logged in
 
 Where should this redirect be handled? or how to do this in a better way?
 
 ### 3. Validation errors load the last tab with errors
 I've added to the AppServiceProvider the snippet to show a notification when a validation error happens.
+
 The notification shows the first error, but the form goes to the latest tab with errors. 
 
 It's there a way to make it go to the first one with errors?
@@ -71,12 +71,13 @@ Using Pest, if I try to make a test to check the Logout redirect I get an error
 php artisan test --filter=LoginTest
 
 How can I test this POST endpoint?
+
 How should I indicate the panel in the test?
 
 ### 5. Translatable fields in selects and indicators
 
 I opened an issue in the filament repo about the labels of translatable fields
-This used to work right at the bat in v2, but now forces us to overwrite the label in selects and indicators
+This used to work right off the bat in v2, but now forces us to overwrite the label in selects and indicators
 
 Issue -> https://github.com/filamentphp/filament/issues/9292
 The repo for this issue is -> https://github.com/buzkall/filament-indicator-translatable-multiple
@@ -85,8 +86,8 @@ The issue has a comment written by me after debugging it, I would like to unders
 
 ### 6. Trigger loading while waiting for something in afterStateUpdated
 
-I've copied a macro I'm using in another project, which opens a modal with a select. 
-That selection trigger some queries in the afterStateUpdated and populates two hidden fields.
+I've pasted in this project a macro I'm using in another project, which opens a modal with a select. 
+That selection triggers some queries in the afterStateUpdated and populates two hidden fields.
 I've simulated it here with a sleep
 
 How can I show a loading indicator while the queries are happening?
@@ -96,6 +97,7 @@ How can I show a loading indicator while the queries are happening?
 ### 7. Reorderable gets stuck with 200 items
 
 In v3 goes a little bit faster, but feels unresponsive.
+
 In a project that still is in v2 it reaches the 30 seconds timeout
 
 https://filament-issues.test/admin/videos?isTableReordering=true
@@ -103,6 +105,7 @@ https://filament-issues.test/admin/videos?isTableReordering=true
 ### 8. Browser notifications
 
 A project back in v2 needed to have browser notifications. 
+
 I wasn't able to do it in filament. I ended up creating an action to open a black tab where the javascript worked
 If I tried to do that inside the resource, the javascript didn't work
 
