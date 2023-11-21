@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,5 +28,7 @@ class DatabaseSeeder extends Seeder
              'role' => 'client',
              'password' => 'secret'
          ]);
+
+         Video::factory(222)->create();
     }
 }

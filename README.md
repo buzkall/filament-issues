@@ -83,7 +83,6 @@ The repo for this issue is -> https://github.com/buzkall/filament-indicator-tran
 
 The issue has a comment written by me after debugging it, I would like to understand why the qualifyColumn function is needed
 
-
 ### 6. Trigger loading while waiting for something in afterStateUpdated
 
 I've copied a macro I'm using in another project, which opens a modal with a select. 
@@ -94,7 +93,40 @@ How can I show a loading indicator while the queries are happening?
 
 ![4](public/readme/3.gif)
 
+### 7. Reorderable gets stuck with 200 items
 
+In v3 goes a little bit faster, but feels unresponsive.
+In a project that still is in v2 it reaches the 30 seconds timeout
 
-### If we're super fast
-Having two tabs with the same relationship, breaks the multiple selects
+https://filament-issues.test/admin/videos?isTableReordering=true
+
+### 8. Browser notifications
+
+A project back in v2 needed to have browser notifications. 
+I wasn't able to do it in filament. I ended up creating an action to open a black tab where the javascript worked
+If I tried to do that inside the resource, the javascript didn't work
+
+```
+<script>
+    Notification.requestPermission( permission => {
+        new Notification('Prueba de notificación');
+    });
+
+    window.Echo.private('App.Models.FilamentUser.1')
+        .listen('.database-notifications.sent', (event) => {
+            console.log(event);
+
+            if (! ('Notification' in window)) {
+                alert('Web Notification is not supported');
+                return;
+            }
+
+            Notification.requestPermission( permission => {
+                new Notification('Nuevo mensaje para la web');
+            });
+        });
+</script>
+```
+
+### 9. If we're super fast
+Having two tabs with the same relationship, breaks the selects with multiple option enabled
