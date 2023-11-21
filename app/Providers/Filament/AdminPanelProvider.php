@@ -51,9 +51,7 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            //->sidebarCollapsibleOnDesktop()
-            //->brandLogo(asset('images/logo.jpg'))
-            //->brandLogoHeight('6rem')
+            ->sidebarCollapsibleOnDesktop()
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors(['primary' => '#004952'])
             ->darkMode(false)

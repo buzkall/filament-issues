@@ -6,12 +6,12 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 
 class UserResource extends Resource
@@ -22,23 +22,70 @@ class UserResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('role')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(255),
-            ]);
+        return $form->schema(
+            [
+                Tabs::make()
+                    ->persistTabInQueryString()
+                    ->tabs(
+                        [
+                            Tab::make(__('Personal data'))
+                                ->schema([
+                                    Forms\Components\TextInput::make('name')
+                                        ->required()
+                                        ->maxLength(255),
+                                    Forms\Components\TextInput::make('role')
+                                        ->maxLength(255),
+                                    Forms\Components\TextInput::make('email')
+                                        ->email()
+                                        ->required()
+                                        ->maxLength(255),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\TextInput::make('password')
+                                        ->password()
+                                        ->required()
+                                        ->maxLength(255),
+                                ]),
+                            Tab::make(__('Second'))
+                                ->schema([
+                                    Forms\Components\TextInput::make('name')
+                                        ->required()
+                                        ->maxLength(255),
+                                    Forms\Components\TextInput::make('role')
+                                        ->maxLength(255),
+                                    Forms\Components\TextInput::make('email')
+                                        ->email()
+                                        ->required()
+                                        ->maxLength(255),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\DateTimePicker::make('email_verified_at'),
+                                    Forms\Components\TextInput::make('password')
+                                        ->password()
+                                        ->required()
+                                        ->maxLength(255),
+                                ]),
+                        ])
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table
